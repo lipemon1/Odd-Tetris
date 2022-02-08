@@ -1,5 +1,3 @@
-using System;
-using OddTetris.Controller;
 using UnityEngine;
 
 namespace OddTetris.View
