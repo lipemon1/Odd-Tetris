@@ -6,6 +6,7 @@ namespace OddTetris.View
         Menu,
         GameMode,
         Pause,
+        Gameplay,
         Gameover
     }
 }
