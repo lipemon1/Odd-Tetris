@@ -4,7 +4,7 @@ namespace OddTetris.View
     public enum ViewType
     {
         Menu,
-        MatchSelection,
+        GameMode,
         Pause,
         Gameover
     }

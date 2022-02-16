@@ -6,12 +6,26 @@ namespace OddTetris.View
     {
         [SerializeField]
         private ViewType m_Type;
-        public ViewType Type => m_Type;
+        private ViewType Type => m_Type;
         [SerializeField]
         private GameObject m_GameObject;
 
         [SerializeField] 
         private bool m_disableOnAwake = true;
+
+        #region Monobehavior
+
+        private void Awake()
+        {
+            ViewController.RegisterView(this);
+            
+            if(m_disableOnAwake)
+                CloseView();
+        }
+
+        #endregion
+
+        #region IVIEW
 
         public virtual void OpenView()
         {
@@ -22,13 +36,12 @@ namespace OddTetris.View
             m_GameObject.SetActive(false);
         }
 
-        private void Awake()
+        public ViewType GetViewType()
         {
-            ViewController.RegisterView(this);
-            
-            if(m_disableOnAwake)
-                CloseView();
+            return Type;
         }
+
+        #endregion
 
 #if UNITY_EDITOR
         private void OnValidate()
