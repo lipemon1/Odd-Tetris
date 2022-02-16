@@ -10,7 +10,7 @@ namespace OddTetris.GameLoop
 
         public void StartSingleGame()
         {
-            PiecesSpawnController.Instance.StartPiecesPool(m_GameSettings.PiecesPoolSize, m_GameSettings.PiecePrefab, OnPoolReady);
+            PiecesSpawnController.Instance.StartPiecesPool(m_GameSettings.PiecesPoolSize, m_GameSettings.PiecePrefab, m_GameSettings.Pieces, OnPoolReady);
             ViewController.CloseView(ViewType.GameMode);
             ViewController.CloseView(ViewType.Menu);
         }

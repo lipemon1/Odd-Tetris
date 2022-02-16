@@ -1,3 +1,4 @@
+using OddTetris.Behavior;
 using UnityEngine;
 
 namespace OddTetris.Scriptables
@@ -7,5 +8,6 @@ namespace OddTetris.Scriptables
     {
         public int PiecesPoolSize;
         public GameObject PiecePrefab;
+        public PieceBehavior[] Pieces;
     }   
 }
