@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4307384139408829110}
-  - component: {fileID: 4307384139408829109}
+  - component: {fileID: -9220892323877517769}
   - component: {fileID: 4307384139408829108}
+  - component: {fileID: 9150124031906458846}
   m_Layer: 0
-  m_Name: Piece
+  m_Name: Piece Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &4307384139408829109
+--- !u!50 &-9220892323877517769
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -47,7 +48,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.01
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -67,3 +68,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PieceObject: {fileID: 0}
   m_AngleAmount: 90
+  m_Rigidbody2D: {fileID: -9220892323877517769}
+  m_DownMovementBehavior: {fileID: 9150124031906458846}
+--- !u!114 &9150124031906458846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4307384139408829130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d97d2579d1f5c94d974e61231edeeb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NextMoveTime: 0
+  m_Amount: 1

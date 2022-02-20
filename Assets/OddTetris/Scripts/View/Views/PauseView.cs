@@ -16,5 +16,17 @@ namespace OddTetris.View
         {
             ViewController.CloseView(ViewType.Pause);
         }
+
+        protected override void OnViewOpened()
+        {
+            base.OnViewOpened();
+            Time.timeScale = 0f;
+        }
+
+        protected override void OnViewClosed()
+        {
+            base.OnViewClosed();
+            Time.timeScale = 1f;
+        }
     }   
 }

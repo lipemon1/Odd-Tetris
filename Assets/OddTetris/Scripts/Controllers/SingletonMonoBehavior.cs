@@ -15,7 +15,7 @@ public class SingletonMonoBehavior<T> : MonoBehaviour where T : SingletonMonoBeh
             T obj = FindObjectOfType<T>();
             if (obj == null)
             {
-                GameObject newObject = new GameObject($"Singleton {typeof(T)}");
+                GameObject newObject = new GameObject($"Singleton {typeof(T).Name}");
                 newObject.transform.SetParent(GetTransformHolder());
                 obj = newObject.AddComponent<T>();
             }

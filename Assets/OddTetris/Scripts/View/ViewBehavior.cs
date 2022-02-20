@@ -30,11 +30,16 @@ namespace OddTetris.View
         public virtual void OpenView()
         {
             m_GameObject.SetActive(true);
+            OnViewOpened();
         }
         public virtual void CloseView()
         {
             m_GameObject.SetActive(false);
+            OnViewClosed();
         }
+        
+        protected virtual void OnViewOpened() { }
+        protected virtual void OnViewClosed() { }
 
         public ViewType GetViewType()
         {
