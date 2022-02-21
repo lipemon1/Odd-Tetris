@@ -17,7 +17,7 @@ MonoBehaviour:
   Pieces:
   - {fileID: 56426867538097522, guid: 59eade260d29a0d40a5377750c2154a9, type: 3}
   HorizontalMovementAmount: 0.25
-  DownMovementAmount: 1
+  DownMovementAmount: 2
   DownMovementFrequency: 0
   PieceValue: 1
-  PieceStartValue: 10
+  PieceStartValue: 1

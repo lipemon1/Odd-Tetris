@@ -14,6 +14,9 @@ namespace OddTetris.Behavior.Pieces
         public OnPieceKilledDelegate OnPiecePlayerKilled;
         public OnPieceKilledDelegate OnPieceAIKilled;
 
+        public delegate void OnPlayerLostDelegate(Player playerLost);
+        public OnPlayerLostDelegate OnPlayerLost;
+
         private int m_PieceAmountValue;
         private int m_PieceAmounts;
 
@@ -51,6 +54,16 @@ namespace OddTetris.Behavior.Pieces
                 default:
                     Debug.LogException(new ArgumentOutOfRangeException());
                     break;
+            }
+            
+            TryFinishMatch(newValue, player);
+        }
+
+        private void TryFinishMatch(int newValue, Player player)
+        {
+            if (newValue <= 0)
+            {
+                OnPlayerLost?.Invoke(player);
             }
         }
     }

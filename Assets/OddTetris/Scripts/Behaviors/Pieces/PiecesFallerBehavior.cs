@@ -14,6 +14,7 @@ namespace OddTetris.Behavior
         public void FallPiece(Action onPieceGrounded)
         {
             PieceHolderBehavior piece = PiecesPoolController.Instance.GetRandomPiece();
+            PiecesFallerController.Instance.RegisterFallingPiece(piece);
             piece.transform.position = m_FallPosition;
             piece.StartMovingDown(onPieceGrounded);
             piece.SetPlayerOnPiece(m_Player);
