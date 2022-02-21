@@ -17,3 +17,5 @@ MonoBehaviour:
   Pieces:
   - {fileID: 56426867538097522, guid: 59eade260d29a0d40a5377750c2154a9, type: 3}
   TimeBetweenPieces: 3
+  DownMovementAmount: 1
+  DownMovementFrequency: 0
