@@ -15,6 +15,7 @@ namespace OddTetris.Scriptables
         public float HorizontalMovementAmount;
         public float DownMovementAmount;
         public float DownMovementFrequency;
+        public float AngleRotateAmount; 
 
         [Space] [Header("Pieces Values")] 
         public int PieceValue;
@@ -22,6 +23,9 @@ namespace OddTetris.Scriptables
         
         [Space] [Header("Bases")]
         public float BaseHorizontalOffset;
+        
+        [Space] [Header("AI")]
+        public float AIDecisionTime;
 
         private static GameSettings m_Instance = null;
         public static GameSettings Instance => GetGameSettingsReference();

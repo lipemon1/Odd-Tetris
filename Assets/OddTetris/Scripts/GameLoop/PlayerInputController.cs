@@ -9,8 +9,17 @@ namespace OddTetris.GameLoop
 
         public void SetCurrentBehavior(PieceHolderBehavior pieceHolderBehavior, Player player)
         {
-            if(player.PlayerType == PlayerType.Human)
+            if (m_CurrentPieceBehavior != null)
+            {
+                m_CurrentPieceBehavior.DisableAIMovement();
+            }
+            
+            pieceHolderBehavior.DisableAIMovement();
+
+            if (player.PlayerType == PlayerType.Human)
                 m_CurrentPieceBehavior = pieceHolderBehavior;
+            else
+                pieceHolderBehavior.EnableAIMovement();
         }
         
         public void MoveLeft()

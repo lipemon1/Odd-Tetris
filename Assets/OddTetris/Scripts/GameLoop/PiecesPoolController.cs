@@ -88,14 +88,14 @@ namespace OddTetris.GameLoop
         {
             return Instantiate<T>(prefab, _PoolPosition, Quaternion.identity);
         }
-        
-        public PieceHolderBehavior SpawnHolderPiece()
+
+        private PieceHolderBehavior SpawnHolderPiece()
         {
             if (m_PiecesHolderPool.Count > 0)
             {
                 PieceHolderBehavior holderPiece = m_PiecesHolderPool[0];
                 m_PiecesHolderPool.RemoveAt(0);
-                holderPiece.transform.SetParent(null);
+                PiecesKillerController.Instance.ReceivePieceChild(holderPiece);
                 return holderPiece;
             }
             else

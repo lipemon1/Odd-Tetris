@@ -34,13 +34,11 @@ namespace OddTetris.Behavior.Pieces
             {
                 piecesKilled.Add(pieceToKill);
                 newValue -= piecesKilled.Count * m_PieceAmountValue;
-                Debug.Log($"Player {player} has {newValue} killed pieces");
             }
             else
             {
                 m_PiecesKilled.Add(player, new List<PieceHolderBehavior>(){pieceToKill});
                 newValue -= 1 * m_PieceAmountValue;
-                Debug.Log($"Player {player} has {newValue} killed pieces");
             }
 
             switch (player.PlayerType)
@@ -65,6 +63,11 @@ namespace OddTetris.Behavior.Pieces
             {
                 OnPlayerLost?.Invoke(player);
             }
+        }
+
+        public void ReceivePieceChild(PieceHolderBehavior piece)
+        {
+            piece.transform.SetParent(this.transform);
         }
     }
 }

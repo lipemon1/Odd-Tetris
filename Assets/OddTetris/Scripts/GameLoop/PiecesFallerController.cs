@@ -21,9 +21,6 @@ namespace OddTetris.GameLoop
         {
             if (m_fallersHolder == null)
                 m_fallersHolder = CreateFallerHolder();
-            
-            m_Fallers.Clear();
-            m_PiecesFalling.Clear();
 
             PiecesFallerBehavior fallerBehavior = GetNewFallerBehaviorObject(m_fallersHolder);
             fallerBehavior.StartFallingPieces(position, () => CallNewPieceToFall(fallerBehavior), player);
@@ -66,6 +63,9 @@ namespace OddTetris.GameLoop
             {
                 Destroy(pieceHolderBehavior.gameObject); //Change to Despawn
             }
+            
+            m_Fallers.Clear();
+            m_PiecesFalling.Clear();
         }
     }
 }

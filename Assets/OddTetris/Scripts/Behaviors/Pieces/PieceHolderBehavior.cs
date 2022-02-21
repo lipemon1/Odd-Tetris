@@ -1,5 +1,6 @@
 using System;
 using OddTetris.Players;
+using OddTetris.Scriptables;
 using UnityEngine;
 
 namespace OddTetris.Behavior.Pieces
@@ -13,6 +14,12 @@ namespace OddTetris.Behavior.Pieces
         private bool m_CollisionAlreadyStopped = false;
         [SerializeField] private PieceDownMovementBehavior m_DownMovementBehavior;
         [SerializeField] private PieceHorizontalMovement m_HorizontalMovementBehavior;
+        [SerializeField] private AIHorizontalMovement m_AIHorizontalMovement;
+
+        private void Start()
+        {
+            m_AngleAmount = GameSettings.Instance.AngleRotateAmount;
+        }
 
         public void Rotate()
         {
@@ -27,6 +34,7 @@ namespace OddTetris.Behavior.Pieces
             m_PieceBehavior.transform.localPosition = Vector3.zero;
 
             m_PieceBehavior.SetHolder(this);
+            m_AIHorizontalMovement.SetHolder(this);
             newPiece.AddCollideEvent(OnCollideWithOtherPiece);
         }
 
@@ -36,6 +44,7 @@ namespace OddTetris.Behavior.Pieces
             {
                 m_CollisionAlreadyStopped = true;
                 m_DownMovementBehavior.StopMovingDown();
+                DisableAIMovement();
                 m_Rigidbody2D.gravityScale = 1;
             }
         }
@@ -60,6 +69,16 @@ namespace OddTetris.Behavior.Pieces
         {
             m_PieceBehavior.SetPlayer(player);
             m_HorizontalMovementBehavior.enabled = player.PlayerType == PlayerType.Human;
+        }
+
+        public void EnableAIMovement()
+        {
+            m_AIHorizontalMovement.enabled = true;
+        }
+
+        public void DisableAIMovement()
+        {
+            m_AIHorizontalMovement.enabled = false;
         }
     }   
 }
