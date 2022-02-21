@@ -27,10 +27,14 @@ namespace OddTetris.GameLoop
 
             Player player = new Player(PlayerType.Human, m_SinglePlayerTransform);
             m_Players.Add(player);
+            
+            ViewController.OnSingleStart();
 
             ViewController.CloseView(ViewType.GameMode);
             ViewController.CloseView(ViewType.Menu);
+            
             ViewController.OpenView(ViewType.Gameplay);
+            ViewController.OpenView(ViewType.HUD);
         }
 
         public void StartVersusGame()

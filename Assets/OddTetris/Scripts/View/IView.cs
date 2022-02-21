@@ -5,5 +5,7 @@ namespace OddTetris.View
         void OpenView();
         void CloseView();
         ViewType GetViewType();
+        void OnSinglePlayerStart();
+        void OnVersusAIStart();
     }   
 }

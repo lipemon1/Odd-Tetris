@@ -11,6 +11,11 @@ namespace OddTetris.Behavior.Pieces
         {
             m_OnCollide?.Invoke();
             m_OnCollide = null;
+            
+            if (other.gameObject.CompareTag("PieceKiller"))
+            {
+                Debug.Log("Kill this Piece");
+            }
         }
 
         public void AddCollideEvent(Action onCollideWithOtherPiece)

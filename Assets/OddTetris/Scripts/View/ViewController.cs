@@ -32,37 +32,21 @@ namespace OddTetris.View
             else
                 Debug.LogError($"No view found with type [{viewToClose}]");
         }
-        
-        public static void plusMinus(List<int> arr)
+
+        public static void OnSingleStart()
         {
-            Console.WriteLine("Have Amount of " + arr.Count);
-            arr.Sort();
-        
-            int[] numbersToSum = new int[4];
-            int minSum = 0;
-            int maxSum = 0;
-        
-            for(int i = 0; i < 4; i++)
+            foreach (KeyValuePair<ViewType, IView> view in _views)
             {
-                numbersToSum[i] = arr[i];
+                view.Value.OnSinglePlayerStart();
             }
+        }
         
-            minSum = numbersToSum.Sum();
-        
-            numbersToSum = new int[4];
-            int startIndex = arr.Count - 1;
-            int endIndex = startIndex - 2;
-        
-            Console.WriteLine("Start " + startIndex + " with End " + endIndex);
-            for(int i = 4; i > 1; i--)
+        public static void OnAIVersusStart()
+        {
+            foreach (KeyValuePair<ViewType, IView> view in _views)
             {
-                Console.WriteLine("Passaing index " + i);
-                numbersToSum[i] = arr[i];
+                view.Value.OnVersusAIStart();
             }
-        
-            maxSum = numbersToSum.Sum();
-        
-            Console.WriteLine(minSum + " " + maxSum);   
         }
     }
 }

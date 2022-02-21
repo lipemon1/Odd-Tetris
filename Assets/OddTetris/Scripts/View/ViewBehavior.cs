@@ -46,6 +46,16 @@ namespace OddTetris.View
             return Type;
         }
 
+        public virtual void OnSinglePlayerStart()
+        {
+            
+        }
+
+        public virtual void OnVersusAIStart()
+        {
+            
+        }
+
         #endregion
 
 #if UNITY_EDITOR
