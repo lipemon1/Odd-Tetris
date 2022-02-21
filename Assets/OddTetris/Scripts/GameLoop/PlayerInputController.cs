@@ -14,12 +14,12 @@ namespace OddTetris.GameLoop
         
         public void MoveLeft()
         {
-            
+            m_CurrentPieceBehavior.MoveLeft();
         }
 
         public void MoveRight()
         {
-            
+            m_CurrentPieceBehavior.MoveRight();
         }
 
         public void RotatePiece()

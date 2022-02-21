@@ -9,8 +9,9 @@ namespace OddTetris.Behavior.Pieces
         [SerializeField] private float m_AngleAmount;
         [SerializeField] private Rigidbody2D m_Rigidbody2D;
 
-        private bool m_CollidAlreadyStopped = false;
+        private bool m_CollisionAlreadyStopped = false;
         [SerializeField] private PieceDownMovementBehavior m_DownMovementBehavior;
+        [SerializeField] private PieceHorizontalMovement m_HorizontalMovementBehavior;
 
         public void Rotate()
         {
@@ -29,9 +30,9 @@ namespace OddTetris.Behavior.Pieces
 
         private void OnCollideWithOtherPiece()
         {
-            if (!m_CollidAlreadyStopped)
+            if (!m_CollisionAlreadyStopped)
             {
-                m_CollidAlreadyStopped = true;
+                m_CollisionAlreadyStopped = true;
                 m_DownMovementBehavior.StopMovingDown();
                 m_Rigidbody2D.gravityScale = 1;
             }
@@ -45,12 +46,12 @@ namespace OddTetris.Behavior.Pieces
 
         public void MoveLeft()
         {
-            
+            m_HorizontalMovementBehavior.MoveLeft();
         }
 
         public void MoveRight()
         {
-            
+            m_HorizontalMovementBehavior.MoveRight();
         }
     }   
 }

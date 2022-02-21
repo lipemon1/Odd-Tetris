@@ -11,13 +11,9 @@ namespace OddTetris.Scriptables
         public int PiecesPoolSize;
         public PieceHolderBehavior PiecePrefab;
         public PieceBehavior[] Pieces;
-        
-        [Space]
-        [Header("Pieces Spawn")]
-        public float TimeBetweenPieces;
 
-        [Space] 
-        [Header("Pieces Movement")] 
+        [Space] [Header("Pieces Movement")] 
+        public float HorizontalMovementAmount;
         public float DownMovementAmount;
         public float DownMovementFrequency;
 
