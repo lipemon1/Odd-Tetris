@@ -41,6 +41,11 @@ namespace OddTetris.GameLoop
         {
             
         }
+
+        private void KillPieceByPlayer()
+        {
+            
+        }
         
         private void OnPoolReady()
         {

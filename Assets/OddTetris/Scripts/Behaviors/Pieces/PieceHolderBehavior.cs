@@ -1,4 +1,5 @@
 using System;
+using OddTetris.Players;
 using UnityEngine;
 
 namespace OddTetris.Behavior.Pieces
@@ -25,6 +26,7 @@ namespace OddTetris.Behavior.Pieces
             m_PieceBehavior.transform.SetParent(this.transform);
             m_PieceBehavior.transform.localPosition = Vector3.zero;
 
+            m_PieceBehavior.SetHolder(this);
             newPiece.AddCollideEvent(OnCollideWithOtherPiece);
         }
 
@@ -52,6 +54,11 @@ namespace OddTetris.Behavior.Pieces
         public void MoveRight()
         {
             m_HorizontalMovementBehavior.MoveRight();
+        }
+
+        public void SetPlayerOnPiece(Player player)
+        {
+            m_PieceBehavior.SetPlayer(player);
         }
     }   
 }

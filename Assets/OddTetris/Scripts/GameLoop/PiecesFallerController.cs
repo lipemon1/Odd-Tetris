@@ -1,6 +1,7 @@
-using System;
 using System.Collections.Generic;
 using OddTetris.Behavior;
+using OddTetris.Behavior.Pieces;
+using OddTetris.Players;
 using UnityEngine;
 
 namespace OddTetris.GameLoop
@@ -10,13 +11,13 @@ namespace OddTetris.GameLoop
         private List<PiecesFallerBehavior> m_Fallers = new List<PiecesFallerBehavior>();
         private Transform m_fallersHolder;
 
-        public void StartNewFaller(Vector3 position)
+        public void StartNewFaller(Vector3 position, Player player)
         {
             if (m_fallersHolder == null)
                 m_fallersHolder = CreateFallerHolder();
 
             PiecesFallerBehavior fallerBehavior = GetNewFallerBehaviorObject(m_fallersHolder);
-            fallerBehavior.StartFallingPieces(position, () => CallNewPieceToFall(fallerBehavior));
+            fallerBehavior.StartFallingPieces(position, () => CallNewPieceToFall(fallerBehavior), player);
             m_Fallers.Add(fallerBehavior);
         }
 

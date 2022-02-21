@@ -20,7 +20,7 @@ namespace OddTetris.Players
         public Player(PlayerType playerType, Transform singlePlayerTransform)
         {
             m_PlayerType = playerType;
-            PiecesFallerController.Instance.StartNewFaller(singlePlayerTransform.position);
+            PiecesFallerController.Instance.StartNewFaller(singlePlayerTransform.position, this);
         }
     }   
 }
