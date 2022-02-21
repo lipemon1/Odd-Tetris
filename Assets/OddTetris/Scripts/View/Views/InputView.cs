@@ -1,4 +1,5 @@
 using System;
+using OddTetris.GameLoop;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,17 +20,17 @@ namespace OddTetris.View
 
         private void OnRotateClicked()
         {
-            Debug.Log("Rotate");
+            PlayerInputController.Instance.RotatePiece();
         }
 
         private void OnMoveRightClicked()
         {
-            Debug.Log("Move Right");
+            PlayerInputController.Instance.MoveRight();
         }
 
         private void OnMoveLeftClicked()
         {
-            Debug.Log("Move Left");
+            PlayerInputController.Instance.MoveLeft();
         }
     }   
 }

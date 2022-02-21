@@ -17,7 +17,7 @@ namespace OddTetris.GameLoop
             
         }
 
-        public void Rotate()
+        public void RotatePiece()
         {
             
         }

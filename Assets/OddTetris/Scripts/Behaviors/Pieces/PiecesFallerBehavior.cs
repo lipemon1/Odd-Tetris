@@ -8,41 +8,20 @@ namespace OddTetris.Behavior
 {
     public class PiecesFallerBehavior : MonoBehaviour
     {
-        private bool m_IsFallingPieces = false;
-        private float m_DelayBetweenPieces;
-        private float m_CurrentTime;
         private Vector3 m_FallPosition;
 
-        private void Update()
+        public void FallPiece(Action onPieceGrounded)
         {
-            if (m_IsFallingPieces)
-            {
-                if(m_CurrentTime > m_DelayBetweenPieces)
-                    FallPiece();
-
-                m_CurrentTime += Time.deltaTime;
-            }
-        }
-
-        private void FallPiece()
-        {
-            m_CurrentTime = 0f;
-
             PieceHolderBehavior piece = PiecesPoolController.Instance.GetRandomPiece();
             piece.transform.position = m_FallPosition;
-            piece.StartMovingDown();
+            piece.StartMovingDown(onPieceGrounded);
         }
 
-        public void StartFallingPieces(Vector3 positionToStartFalling)
+        public void StartFallingPieces(Vector3 positionToStartFalling, Action onPieceGrounded)
         {
             m_FallPosition = positionToStartFalling;
-            m_DelayBetweenPieces = GameSettings.Instance.TimeBetweenPieces;
-            m_IsFallingPieces = true;
-        }
-
-        public void StopFallingPieces()
-        {
-            m_IsFallingPieces = false;
+            
+            FallPiece(onPieceGrounded);
         }
     }   
 }

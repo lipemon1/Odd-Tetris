@@ -10,11 +10,12 @@ namespace OddTetris.Behavior.Pieces
         private void OnCollisionEnter2D(Collision2D other)
         {
             m_OnCollide?.Invoke();
+            m_OnCollide = null;
         }
 
-        public void SetCollideEvent(Action onCollideWithOtherPiece)
+        public void AddCollideEvent(Action onCollideWithOtherPiece)
         {
-            m_OnCollide = onCollideWithOtherPiece;
+            m_OnCollide += onCollideWithOtherPiece;
         }
     }   
 }

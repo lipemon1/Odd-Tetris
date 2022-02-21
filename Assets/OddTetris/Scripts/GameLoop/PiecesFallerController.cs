@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using OddTetris.Behavior;
 using UnityEngine;
@@ -15,8 +16,13 @@ namespace OddTetris.GameLoop
                 m_fallersHolder = CreateFallerHolder();
 
             PiecesFallerBehavior fallerBehavior = GetNewFallerBehaviorObject(m_fallersHolder);
-            fallerBehavior.StartFallingPieces(position);
+            fallerBehavior.StartFallingPieces(position, () => CallNewPieceToFall(fallerBehavior));
             m_Fallers.Add(fallerBehavior);
+        }
+
+        private void CallNewPieceToFall(PiecesFallerBehavior faller)
+        {
+            faller.FallPiece(() => CallNewPieceToFall(faller));
         }
 
         private Transform CreateFallerHolder()

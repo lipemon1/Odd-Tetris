@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
 namespace OddTetris.Behavior.Pieces
 {
     public class PieceHolderBehavior : MonoBehaviour
     {
-        [SerializeField] private Transform m_PieceObject;
+        [SerializeField] private PieceBehavior m_PieceBehavior;
         [SerializeField] private float m_AngleAmount;
         [SerializeField] private Rigidbody2D m_Rigidbody2D;
 
@@ -14,17 +15,17 @@ namespace OddTetris.Behavior.Pieces
         [ContextMenu("Rotate")]
         public void Rotate()
         {
-            m_PieceObject.RotateAround(m_PieceObject.position, Vector3.forward, m_AngleAmount);
+            m_PieceBehavior.transform.RotateAround(m_PieceBehavior.transform.position, Vector3.forward, m_AngleAmount);
         }
 
         public void SetupPiece(PieceBehavior newPiece)
         {
-            m_PieceObject = newPiece.transform;
+            m_PieceBehavior = newPiece;
             
-            m_PieceObject.SetParent(this.transform);
-            m_PieceObject.localPosition = Vector3.zero;
+            m_PieceBehavior.transform.SetParent(this.transform);
+            m_PieceBehavior.transform.localPosition = Vector3.zero;
 
-            newPiece.SetCollideEvent(OnCollideWithOtherPiece);
+            newPiece.AddCollideEvent(OnCollideWithOtherPiece);
         }
 
         private void OnCollideWithOtherPiece()
@@ -37,8 +38,9 @@ namespace OddTetris.Behavior.Pieces
             }
         }
 
-        public void StartMovingDown()
+        public void StartMovingDown(Action onPieceGrounded)
         {
+            m_PieceBehavior.AddCollideEvent(onPieceGrounded);
             m_DownMovementBehavior.StartMovingDown();
         }
     }   
