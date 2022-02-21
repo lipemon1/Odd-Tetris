@@ -19,3 +19,5 @@ MonoBehaviour:
   HorizontalMovementAmount: 0.25
   DownMovementAmount: 1
   DownMovementFrequency: 0
+  PieceValue: 1
+  PieceStartValue: 10

@@ -1,5 +1,6 @@
 using System;
 using OddTetris.Behavior.Pieces;
+using OddTetris.Scriptables;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,12 @@ namespace OddTetris.View
 
         private void Start()
         {
+            int initialValue = GameSettings.Instance.PieceStartValue;
+            m_PlayerLifeBar.maxValue = initialValue;
+            m_PlayerLifeBar.value = initialValue;
+            m_AILifeBar.maxValue = initialValue;
+            m_AILifeBar.value = initialValue;
+            
             PiecesKillerController.Instance.OnPiecePlayerKilled += OnPiecePlayerKilled;
             PiecesKillerController.Instance.OnPieceAIKilled += OnPieceAIKilled;
         }
