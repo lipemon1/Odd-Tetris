@@ -12,7 +12,6 @@ namespace OddTetris.Behavior.Pieces
         private bool m_CollidAlreadyStopped = false;
         [SerializeField] private PieceDownMovementBehavior m_DownMovementBehavior;
 
-        [ContextMenu("Rotate")]
         public void Rotate()
         {
             m_PieceBehavior.transform.RotateAround(m_PieceBehavior.transform.position, Vector3.forward, m_AngleAmount);
@@ -42,6 +41,16 @@ namespace OddTetris.Behavior.Pieces
         {
             m_PieceBehavior.AddCollideEvent(onPieceGrounded);
             m_DownMovementBehavior.StartMovingDown();
+        }
+
+        public void MoveLeft()
+        {
+            
+        }
+
+        public void MoveRight()
+        {
+            
         }
     }   
 }
