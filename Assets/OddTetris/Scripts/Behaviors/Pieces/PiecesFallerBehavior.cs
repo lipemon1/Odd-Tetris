@@ -1,7 +1,6 @@
 using System;
 using OddTetris.Behavior.Pieces;
 using OddTetris.GameLoop;
-using OddTetris.Scriptables;
 using UnityEngine;
 
 namespace OddTetris.Behavior
