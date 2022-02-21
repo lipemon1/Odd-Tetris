@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using OddTetris.Behavior.Pieces;
 using OddTetris.Players;
@@ -28,11 +27,25 @@ namespace OddTetris.GameLoop
 
         public void StartSingleGame()
         {
-            Player player = new Player(PlayerType.Human, m_SinglePlayerTransform);
-            m_Players.Add(player);
+            m_Players.Add(GetNewHumanPlayer());
             
             ViewController.OnSingleStart();
 
+            OnAnyStart();
+        }
+
+        public void StartVersusGame()
+        {
+            m_Players.Add(GetNewHumanPlayer(true));
+            m_Players.Add(GetAIPlayer());
+            
+            ViewController.OnAIVersusStart();
+
+            OnAnyStart();
+        }
+
+        private void OnAnyStart()
+        {
             ViewController.CloseView(ViewType.GameMode);
             ViewController.CloseView(ViewType.Menu);
             
@@ -41,10 +54,18 @@ namespace OddTetris.GameLoop
             ViewController.OpenView(ViewType.Input);
             Time.timeScale = 1f;
         }
-
-        public void StartVersusGame()
+        
+        private Player GetNewHumanPlayer(bool hasEnemy = false)
         {
-            
+            if(hasEnemy)
+                return new Player(PlayerType.Human, m_VersusHumanPlayerTransform);
+            else
+                return new Player(PlayerType.Human, m_SinglePlayerTransform);
+        }
+
+        private Player GetAIPlayer()
+        {
+            return new Player(PlayerType.AI, m_VersusAIPlayerTransform);
         }
         
         private void OnPlayerLost(Player playerlost)

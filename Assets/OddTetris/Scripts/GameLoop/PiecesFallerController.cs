@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using OddTetris.Behavior;
 using OddTetris.Behavior.Pieces;
@@ -53,6 +52,7 @@ namespace OddTetris.GameLoop
         public void RegisterFallingPiece(PieceHolderBehavior pieceHolderBehavior)
         {
             m_PiecesFalling.Add(pieceHolderBehavior);
+            Debug.Log("Piece REgistered");
         }
 
         private void OnPlayerLost(Player playerlost)

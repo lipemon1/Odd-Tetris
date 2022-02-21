@@ -20,6 +20,7 @@ namespace OddTetris.Behavior.Pieces
             {
                 m_IsDead = true;
                 PiecesKillerController.Instance.KillPieceByPlayer(m_PieceHolderBehavior, m_Player);
+                Destroy(m_PieceHolderBehavior.gameObject);
             }
         }
 

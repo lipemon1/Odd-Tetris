@@ -18,7 +18,7 @@ namespace OddTetris.Behavior
             piece.transform.position = m_FallPosition;
             piece.StartMovingDown(onPieceGrounded);
             piece.SetPlayerOnPiece(m_Player);
-            PlayerInputController.Instance.SetCurrentBehavior(piece);
+            PlayerInputController.Instance.SetCurrentBehavior(piece, m_Player);
         }
 
         public void StartFallingPieces(Vector3 positionToStartFalling, Action onPieceGrounded, Player player)

@@ -59,6 +59,7 @@ namespace OddTetris.Behavior.Pieces
         public void SetPlayerOnPiece(Player player)
         {
             m_PieceBehavior.SetPlayer(player);
+            m_HorizontalMovementBehavior.enabled = player.PlayerType == PlayerType.Human;
         }
     }   
 }

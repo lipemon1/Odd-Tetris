@@ -1,4 +1,5 @@
 using OddTetris.Behavior.Pieces;
+using OddTetris.Players;
 
 namespace OddTetris.GameLoop
 {
@@ -6,9 +7,10 @@ namespace OddTetris.GameLoop
     {
         private PieceHolderBehavior m_CurrentPieceBehavior;
 
-        public void SetCurrentBehavior(PieceHolderBehavior pieceHolderBehavior)
+        public void SetCurrentBehavior(PieceHolderBehavior pieceHolderBehavior, Player player)
         {
-            m_CurrentPieceBehavior = pieceHolderBehavior;
+            if(player.PlayerType == PlayerType.Human)
+                m_CurrentPieceBehavior = pieceHolderBehavior;
         }
         
         public void MoveLeft()
