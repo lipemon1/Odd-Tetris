@@ -49,7 +49,6 @@ namespace OddTetris.GameLoop
         public void RegisterFallingPiece(PieceHolderBehavior pieceHolderBehavior)
         {
             m_PiecesFalling.Add(pieceHolderBehavior);
-            Debug.Log("Piece REgistered");
         }
 
         private void OnPlayerLost(Player playerlost)
@@ -61,6 +60,9 @@ namespace OddTetris.GameLoop
 
             foreach (PieceHolderBehavior pieceHolderBehavior in m_PiecesFalling)
             {
+                if(pieceHolderBehavior == null)
+                    continue;
+                
                 Destroy(pieceHolderBehavior.gameObject); //Change to Despawn
             }
             

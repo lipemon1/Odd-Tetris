@@ -13,19 +13,13 @@ namespace OddTetris.View
 
         private void Start()
         {
-            int initialValue = GameSettings.Instance.PieceStartValue;
-            m_PlayerLifeBar.maxValue = initialValue;
-            m_PlayerLifeBar.value = initialValue;
-            m_AILifeBar.maxValue = initialValue;
-            m_AILifeBar.value = initialValue;
-            
             PiecesKillerController.Instance.OnPiecePlayerKilled += OnPiecePlayerKilled;
             PiecesKillerController.Instance.OnPieceAIKilled += OnPieceAIKilled;
         }
 
         private void OnPieceAIKilled(int newValue)
         {
-            m_PlayerLifeBar.value = newValue;
+            m_AILifeBar.value = newValue;
         }
 
         private void OnPiecePlayerKilled(int newValue)
@@ -52,6 +46,7 @@ namespace OddTetris.View
         public override void OnSinglePlayerStart()
         {
             base.OnSinglePlayerStart();
+            SetBars();
             HideLifeBars();
             ShowPlayerLifeBar();
         }
@@ -59,9 +54,19 @@ namespace OddTetris.View
         public override void OnVersusAIStart()
         {
             base.OnVersusAIStart();
+            SetBars();
             HideLifeBars();
             ShowPlayerLifeBar();
             ShowAILifeBar();
+        }
+
+        private void SetBars()
+        {
+            int initialValue = GameSettings.Instance.PieceStartValue;
+            m_PlayerLifeBar.maxValue = initialValue;
+            m_PlayerLifeBar.value = initialValue;
+            m_AILifeBar.maxValue = initialValue;
+            m_AILifeBar.value = initialValue;
         }
     }   
 }
