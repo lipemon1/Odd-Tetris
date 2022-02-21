@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using OddTetris.Behavior.Pieces;
 using OddTetris.Players;
+using OddTetris.Scriptables;
 using OddTetris.View;
 using UnityEngine;
 
@@ -14,6 +15,10 @@ namespace OddTetris.GameLoop
         [SerializeField] private Transform m_SinglePlayerTransform;
         [SerializeField] private Transform m_VersusHumanPlayerTransform;
         [SerializeField] private Transform m_VersusAIPlayerTransform;
+
+        [Header("Bases")] 
+        [SerializeField] private Transform m_HumanPlayerBase;
+        [SerializeField] private Transform m_AIPlayerBase;
 
         private void Awake()
         {
@@ -29,6 +34,8 @@ namespace OddTetris.GameLoop
         {
             m_Players.Add(GetNewHumanPlayer());
             
+            SetBasesPositions(false, GameSettings.Instance.BaseHorizontalOffset);
+            
             ViewController.OnSingleStart();
 
             OnAnyStart();
@@ -38,6 +45,8 @@ namespace OddTetris.GameLoop
         {
             m_Players.Add(GetNewHumanPlayer(true));
             m_Players.Add(GetAIPlayer());
+            
+            SetBasesPositions(true, GameSettings.Instance.BaseHorizontalOffset);
             
             ViewController.OnAIVersusStart();
 
@@ -53,6 +62,17 @@ namespace OddTetris.GameLoop
             ViewController.OpenView(ViewType.HUD);
             ViewController.OpenView(ViewType.Input);
             Time.timeScale = 1f;
+        }
+
+        private void SetBasesPositions(bool hasEnemy, float baseOffset)
+        {
+            if(hasEnemy)
+                m_HumanPlayerBase.position = new Vector3(m_VersusHumanPlayerTransform.position.x + baseOffset, m_HumanPlayerBase.position.y, m_HumanPlayerBase.position.z);
+            else
+                m_HumanPlayerBase.position = new Vector3(m_SinglePlayerTransform.position.x + baseOffset, m_HumanPlayerBase.position.y, m_HumanPlayerBase.position.z);
+            
+            m_AIPlayerBase.position = new Vector3(m_VersusAIPlayerTransform.position.x + baseOffset, m_HumanPlayerBase.position.y, m_HumanPlayerBase.position.z);
+            m_AIPlayerBase.gameObject.SetActive(hasEnemy);
         }
         
         private Player GetNewHumanPlayer(bool hasEnemy = false)

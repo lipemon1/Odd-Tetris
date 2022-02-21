@@ -19,6 +19,9 @@ namespace OddTetris.Scriptables
         [Space] [Header("Pieces Values")] 
         public int PieceValue;
         public int PieceStartValue;
+        
+        [Space] [Header("Bases")]
+        public float BaseHorizontalOffset;
 
         private static GameSettings m_Instance = null;
         public static GameSettings Instance => GetGameSettingsReference();
