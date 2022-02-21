@@ -16,6 +16,10 @@ namespace OddTetris.Scriptables
         public float DownMovementAmount;
         public float DownMovementFrequency;
 
+        [Space] [Header("Pieces Values")] 
+        public int PieceValue;
+        public int PieceStartValue;
+
         private static GameSettings m_Instance = null;
         public static GameSettings Instance => GetGameSettingsReference();
 

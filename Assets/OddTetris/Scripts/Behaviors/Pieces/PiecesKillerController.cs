@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using OddTetris.Players;
+using OddTetris.Scriptables;
 using UnityEngine;
 
 namespace OddTetris.Behavior.Pieces
@@ -8,19 +10,48 @@ namespace OddTetris.Behavior.Pieces
     {
         private Dictionary<Player, List<PieceHolderBehavior>> m_PiecesKilled = new Dictionary<Player, List<PieceHolderBehavior>>();
 
+        public delegate void OnPieceKilledDelegate(int newValue);
+        public OnPieceKilledDelegate OnPiecePlayerKilled;
+        public OnPieceKilledDelegate OnPieceAIKilled;
+
+        private int m_PieceAmountValue;
+        private int m_PieceAmounts;
+
+        private void OnEnable()
+        {
+            m_PieceAmountValue = GameSettings.Instance.PieceValue;
+            m_PieceAmounts = GameSettings.Instance.PieceStartValue;
+        }
+
         public void KillPieceByPlayer(PieceHolderBehavior pieceToKill, Player player)
         {
+            int newValue = m_PieceAmounts;
+            
             if (m_PiecesKilled.TryGetValue(player, out List<PieceHolderBehavior> piecesKilled))
             {
                 piecesKilled.Add(pieceToKill);
-                
-                Debug.Log($"Player {player} has {piecesKilled.Count} killed pieces");
+                newValue -= piecesKilled.Count * m_PieceAmountValue;
+                Debug.Log($"Player {player} has {newValue} killed pieces");
             }
             else
             {
                 m_PiecesKilled.Add(player, new List<PieceHolderBehavior>(){pieceToKill});
-                Debug.Log($"Player {player} has 1 killed pieces");
+                newValue -= 1 * m_PieceAmountValue;
+                Debug.Log($"Player {player} has {newValue} killed pieces");
+            }
+
+            switch (player.PlayerType)
+            {
+                case PlayerType.Human:
+                    OnPiecePlayerKilled?.Invoke(newValue);
+                    break;
+                case PlayerType.AI:
+                    OnPieceAIKilled?.Invoke(newValue);
+                    break;
+                default:
+                    Debug.LogException(new ArgumentOutOfRangeException());
+                    break;
             }
         }
-    }   
+    }
 }

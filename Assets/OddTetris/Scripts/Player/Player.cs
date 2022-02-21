@@ -17,6 +17,8 @@ namespace OddTetris.Players
         [SerializeField]
         private PlayerType m_PlayerType;
 
+        public PlayerType PlayerType => m_PlayerType;
+
         public Player(PlayerType playerType, Transform singlePlayerTransform)
         {
             m_PlayerType = playerType;

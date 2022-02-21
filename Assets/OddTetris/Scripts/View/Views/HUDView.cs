@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using OddTetris.Behavior.Pieces;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,17 +10,33 @@ namespace OddTetris.View
         [SerializeField] private Slider m_PlayerLifeBar;
         [SerializeField] private Slider m_AILifeBar;
 
-        public void ShowPlayerLifeBar()
+        private void Start()
+        {
+            PiecesKillerController.Instance.OnPiecePlayerKilled += OnPiecePlayerKilled;
+            PiecesKillerController.Instance.OnPieceAIKilled += OnPieceAIKilled;
+        }
+
+        private void OnPieceAIKilled(int newValue)
+        {
+            m_PlayerLifeBar.value = newValue;
+        }
+
+        private void OnPiecePlayerKilled(int newValue)
+        {
+            m_PlayerLifeBar.value = newValue;
+        }
+
+        private void ShowPlayerLifeBar()
         {
             m_PlayerLifeBar.gameObject.SetActive(true);
         }
 
-        public void ShowAILifeBar()
+        private void ShowAILifeBar()
         {
             m_AILifeBar.gameObject.SetActive(true);
         }
 
-        public void HideLifebars()
+        private void HideLifeBars()
         {
             m_PlayerLifeBar.gameObject.SetActive(false);
             m_AILifeBar.gameObject.SetActive(false);
@@ -29,14 +45,14 @@ namespace OddTetris.View
         public override void OnSinglePlayerStart()
         {
             base.OnSinglePlayerStart();
-            HideLifebars();
+            HideLifeBars();
             ShowPlayerLifeBar();
         }
 
         public override void OnVersusAIStart()
         {
             base.OnVersusAIStart();
-            HideLifebars();
+            HideLifeBars();
             ShowPlayerLifeBar();
             ShowAILifeBar();
         }
