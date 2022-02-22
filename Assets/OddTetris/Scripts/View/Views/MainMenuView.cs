@@ -1,3 +1,4 @@
+using OddTetris.Audio;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,7 @@ namespace OddTetris.View
 
         private void OnPlayClicked()
         {
+            SFXController.Instance.PlaySfx(AudioIdentifier.Clicked);
             m_PlayButton.interactable = false;
             ViewController.OpenView(ViewType.GameMode, false);
         }

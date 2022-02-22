@@ -1,3 +1,4 @@
+using OddTetris.Audio;
 using OddTetris.GameLoop;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,11 +22,13 @@ namespace OddTetris.View
 
         private void OnVersusModeSelected()
         {
+            SFXController.Instance.PlaySfx(AudioIdentifier.Clicked);
             GameLoopController.Instance.StartVersusGame();
         }
 
         private void OnSingleModeSelected()
         {
+            SFXController.Instance.PlaySfx(AudioIdentifier.Clicked);
             GameLoopController.Instance.StartSingleGame();
         }
     }   

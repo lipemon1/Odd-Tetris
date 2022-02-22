@@ -1,3 +1,4 @@
+using OddTetris.Audio;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,7 @@ namespace OddTetris.View
 
         private void OnPauseClicked()
         {
+            SFXController.Instance.PlaySfx(AudioIdentifier.Clicked);
             ViewController.OpenView(ViewType.Pause);
         }
     }   

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using OddTetris.Audio;
 using OddTetris.Behavior;
 using OddTetris.Behavior.Pieces;
 using OddTetris.Players;
@@ -29,6 +30,7 @@ namespace OddTetris.GameLoop
 
         private void CallNewPieceToFall(PiecesFallerBehavior faller)
         {
+            SFXController.Instance.PlaySfx(AudioIdentifier.Grounded);
             faller.FallPiece(() => CallNewPieceToFall(faller));
         }
 

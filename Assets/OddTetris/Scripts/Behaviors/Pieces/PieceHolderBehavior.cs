@@ -1,4 +1,5 @@
 using System;
+using OddTetris.Audio;
 using OddTetris.Players;
 using OddTetris.Scriptables;
 using UnityEngine;
@@ -23,6 +24,7 @@ namespace OddTetris.Behavior.Pieces
 
         public void Rotate()
         {
+            SFXController.Instance.PlaySfx(AudioIdentifier.Movement);
             m_PieceBehavior.transform.RotateAround(m_PieceBehavior.transform.position, Vector3.forward, m_AngleAmount);
         }
 

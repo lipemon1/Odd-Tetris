@@ -96,7 +96,7 @@ namespace OddTetris.GameLoop
 
         private void OnPoolReady()
         {
-            Debug.Log("Pool has finished");
+            ViewController.CloseView(ViewType.Loading);
         }
 
         public void OpenMainMenu()

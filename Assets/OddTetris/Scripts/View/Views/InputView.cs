@@ -1,4 +1,5 @@
 using System;
+using OddTetris.Audio;
 using OddTetris.GameLoop;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,7 @@ namespace OddTetris.View
 
         private void OnRotateClicked()
         {
+            SFXController.Instance.PlaySfx(AudioIdentifier.Clicked);
             PlayerInputController.Instance.RotatePiece();
         }
 

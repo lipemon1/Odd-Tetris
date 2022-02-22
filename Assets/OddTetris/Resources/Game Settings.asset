@@ -16,8 +16,16 @@ MonoBehaviour:
   PiecePrefab: {fileID: 4307384139408829108, guid: dfd745cacd6f5dc4eb535653e8b2655d, type: 3}
   Pieces:
   - {fileID: 56426867538097522, guid: 59eade260d29a0d40a5377750c2154a9, type: 3}
+  - {fileID: 6033608779728800413, guid: d650ca5c358bfaf48a1f138177a3f9a3, type: 3}
+  - {fileID: 8734434766152574075, guid: 566ddf62527955240a0169c65162d3c6, type: 3}
+  - {fileID: 749976076565496291, guid: 1b032629e93d8d94b9356e0e02bed2d9, type: 3}
+  - {fileID: 6930871760839637542, guid: bc3925c9d5a78264889c2815bc1991a2, type: 3}
+  - {fileID: 7247822295089341393, guid: 7983d8c383bbb17478af86dab6b93ce9, type: 3}
   HorizontalMovementAmount: 0.25
   DownMovementAmount: 2
   DownMovementFrequency: 0
+  AngleRotateAmount: 90
   PieceValue: 1
-  PieceStartValue: 1
+  PieceStartValue: 5
+  BaseHorizontalOffset: 0.25
+  AIDecisionTime: 0.5

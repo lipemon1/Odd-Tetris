@@ -1,4 +1,5 @@
 using System;
+using OddTetris.Audio;
 using OddTetris.Scriptables;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -65,12 +66,19 @@ namespace OddTetris.Behavior.Pieces
 
         private void MoveRight()
         {
+            PlaySfx();
             transform.Translate(Vector3.right * m_MovementAmount);
         }
 
         private void MoveLeft()
         {
+            PlaySfx();
             transform.Translate(Vector3.left * m_MovementAmount);
+        }
+
+        private void PlaySfx()
+        {
+            SFXController.Instance.PlaySfx(AudioIdentifier.Movement);
         }
 
         public void SetHolder(PieceHolderBehavior pieceHolderBehavior)

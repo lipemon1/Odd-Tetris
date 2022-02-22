@@ -9,6 +9,7 @@ namespace OddTetris.View
         Gameplay,
         Input,
         HUD,
+        Loading,
         Gameover
     }
 }

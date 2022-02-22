@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using OddTetris.Audio;
 using OddTetris.Players;
 using OddTetris.Scriptables;
 using UnityEngine;
@@ -53,6 +54,8 @@ namespace OddTetris.Behavior.Pieces
                     Debug.LogException(new ArgumentOutOfRangeException());
                     break;
             }
+            
+            SFXController.Instance.PlaySfx(AudioIdentifier.Killed);
             
             TryFinishMatch(newValue, player);
         }

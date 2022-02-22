@@ -1,6 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using OddTetris.Audio;
 using OddTetris.GameLoop;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +16,7 @@ namespace OddTetris.View
 
         private void MainMenuClicked()
         {
+            SFXController.Instance.PlaySfx(AudioIdentifier.Clicked);
             GameLoopController.Instance.OpenMainMenu();
         }
 
